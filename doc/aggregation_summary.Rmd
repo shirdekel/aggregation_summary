@@ -1,8 +1,8 @@
 ---
-title             : "title"
+title             : "Aggregation experiment summary"
 shorttitle        : ""
 
-note              : Created `r Sys.time()`
+note              : Created `r format(Sys.time())`
 
 author: 
   - name          : "Shir Dekel"
@@ -20,9 +20,210 @@ output:
 ---
 
 ```{r setup, include = FALSE}
-library(tidyverse)
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 ```
+
+# Background
+
+- When considering a number of (positive EV)[^1] gambles, the probability of making an loss overall decreases as the number of accepted gambles increases.
+  - Due to aggregation.
+- Choice bracketing (grouping choices) seems to facilitate EV maximisation (accept positive EV gambles and reject negative EV gambles).
+  - Suggests that choice bracketing facilitates aggregation.
+
+[^1]: Note that the gambles referred to in this memo will be assumed to have a positive EV, unless otherwise specified.
+
+## Evidence of choice bracketing facilitating EV maximisation
+
+- Multi-play gambles
+  - People accept a single decision about multiple identical gambles more than a single decision about one of those gambles [@wedell1994; @dekay2005; @keren1991; @montgomery1982; @redelmeier1992].
+  - People accept a single decision about multiple identical gambles more with an outcome probability distribution, than without [@benartzi1999; @redelmeier1992; @klos2013; @webb2017; @coombs1971; @venkatraman2006; @dekay2005; @langer2001; @keren1991].
+- Repeated-play gambles (experience-based)
+  - People accept a series of gambles more when are they are evaluated and decisions are made less frequently [@gneezy1997; @thaler1997; @bellemare2005; @beshears2016].
+  - People accept a series of gambles more when when they receive feedback or are able to sample from a distribution before making a choice [@camilleri2011; @camilleri2013; @barron2003; @wulff2018; @ludvig2011; @hertwig2004; @jessup2008].
+  - People accept a series of gambles more when being instructed to consider the options as a part of a portfolio [@sokolhessner2009; @sokolhessner2012].
+- Repeated-play gambles (description-based)
+  - People choose fewer (negative EV) lottery tickets when considering them jointly, than when considering them one at a time [@haisley2008].
+
+## Limitations
+
+- Multi-play gambles
+  - Risky choices are usually evaluated in separate instances, not all as a part of one decision.
+  - Choices are usually not identical.
+  - The outcome distribution is rarely available.
+- Repeated-play gambles (experience-based)
+  - We rarely see the immediate outcomes of risky choices, or are able to sample from the outcome distribution.
+- Repeated-play gambles (description-based)
+  - Outcomes and probabilities of each gamble were not specified.
+
+## Choice bracketing manipulations for description-based repeated-play gambles
+
+- Similarity
+  - Choices whose differences are easy to compare (alignable differences) are weighted heavier than those that are difficult to compare [@markman1995; @markman2010].
+  - As such, gambles that are more similar are likely to be broadly bracketed.
+- Presentation
+  - Attributes that are difficult to evaluate on their own will have a greater impact on joint presentation than separate presentation [@hsee1999].
+  - As such, gambles that are presented jointly are likely to be broadly bracketed.
+- Awareness
+  - Lengthy instructions with an elaborate explanation to "think like a trader" -- and to consider all the repeated-play gambles as a portfolio, as opposed to considering them individually -- reduced risk aversion [@sokolhessner2009; @sokolhessner2012].
+  - As such, gambles are likely to be broadly bracketed when considered as a portfolio.
+
+# Experiment
+
+- Research question: how can we facilitate risk aggregation in repeated gambles?
+- Hypotheses
+  - Participants that know how many projects to expect will make more risky choices than participants that are unaware.
+  - Participants will make more risky choices when seeing projects jointly than when seeing them separately.
+  - Participants that see projects from the same industry will make more risky choices than participants that see projects from different industries.
+
+## Method
+
+### Participants
+
+- N = 198
+- From Prolific
+- Age range: 18-69 
+- Age mean: 32.52 (SD = 11.45)
+- Business experience mean years: 7.01 (median = 3)
+- Business education mean years: 1.70 (median = 0)
+
+### Design
+
+- IVs
+  - Similarity (between-subjects)
+  - Awareness (between-subjects)
+  - Presentation (within-subjects)
+- DV
+  - Proportion of projects accepted
+
+### Materials
+
+Figure\ \@ref(fig:instructions) shows the instructions. Figures\ \@ref(fig:awareness-aware) and\ \@ref(fig:awareness-naive) show the next webpage shown to those in the aware and naive conditions, respectively. Figures\ \@ref(fig:presentation-separate-similarity-high1) and\ \@ref(fig:presentation-separate-similarity-high2) show examples of the following 10 separate gambles, in the high similarity condition. Figures\ \@ref(fig:presentation-separate-similarity-low1) and\ \@ref(fig:presentation-separate-similarity-low2) show the same, but in the low similarity condition. Figures\ \@ref(fig:presentation-joint-similarity-high) and\ \@ref(fig:presentation-joint-similarity-low) show a (cropped) set of the 10 joint gambles in the high and low similarity conditions, respectively. Figure\ \@ref(fig:distribution) shows the question with the outcome distribution shown to all participants after the repeated gambles.
+
+```{r instructions, out.width = "100%", fig.cap = "Instructions", fig.pos = "H"}
+image_read(here("img","instructions.png")) %>% 
+        image_trim()
+```
+
+```{r awareness-aware, out.width = "100%", fig.cap = "Awareness - Aware condition", fig.pos = "H"}
+image_read(here("img","awareness_aware.png")) %>% 
+        image_trim()
+```
+
+```{r awareness-naive, out.width = "20%", fig.cap = "Awareness - Naive condition", fig.pos = "H"}
+image_read(here("img","awareness_naive.png")) %>% 
+        image_trim()
+```
+
+```{r presentation-separate-similarity-high1, out.width = "100%", fig.cap = "Separate presentation - High Similarity example 1", fig.pos = "H"}
+image_read(here("img","presentation_separate_similarity_high1.png")) %>% 
+        image_trim()
+```
+
+```{r presentation-separate-similarity-high2, out.width = "100%", fig.cap = "Separate presentation - High Similarity example 2", fig.pos = "H"}
+image_read(here("img","presentation_separate_similarity_high2.png")) %>% 
+        image_trim()
+```
+
+```{r presentation-separate-similarity-low1, out.width = "100%", fig.cap = "Separate presentation - Low Similarity example 1", fig.pos = "H"}
+image_read(here("img","presentation_separate_similarity_low1.png")) %>% 
+        image_trim()
+```
+
+```{r presentation-separate-similarity-low2, out.width = "100%", fig.cap = "Separate presentation - Low Similarity example 2", fig.pos = "H"}
+image_read(here("img","presentation_separate_similarity_low2.png")) %>% 
+        image_trim()
+```
+
+```{r presentation-joint-similarity-high, out.width = "100%", fig.cap = "Joint presentation - High similarity (cropped for space)", fig.pos = "H"}
+image_read(here("img","presentation_joint_similarity_high.png")) %>% 
+  image_trim() %>%
+  image_crop("1485x1880+0+0")
+```
+
+```{r presentation-joint-similarity-low, out.width = "100%", fig.cap = "Joint presentation - Low similarity (cropped for space)", fig.pos = "H"}
+image_read(here("img","presentation_joint_similarity_low.png")) %>% 
+  image_trim() %>%
+  image_crop("1485x1880+0+0")
+```
+
+```{r distribution, out.width = "100%", fig.cap = "Distribution", fig.pos = "H"}
+image_read(here("img","distribution.png")) %>% 
+        image_trim()
+```
+
+## Results
+
+- Figure\ \@ref(fig:full) shows all three variables
+- Participants invested more when they were told that there will be 10 projects, compared to when they were not told this
+  - See Figure\ \@ref(fig:awareness)
+- Participants invested more when viewing the projects jointly, compared to when they viewed them separately
+  - See Figure\ \@ref(fig:presentation)
+- There was no main effect of similarity
+- The interaction between similarity and presentation was significant
+  - See Figure\ \@ref(fig:similarity-presentation)
+  - The presentation effect seems stronger in the high similarity condition than in the low similarity condition
+- An analysis of the trial-by-trial data showed that those in the aware condition became riskier over the 10 separate trials, but those in the naive condition did not.
+  - see Figure\ \@ref(fig:plot-separate-trial-awareness).
+  
+```{r full, fig.cap = "Mean proportions of decisions to invest in each set of 10 projects, by presentation, similarity, and awareness conditions. Error bars represent 95% confidence intervals."}
+readd(full)
+```
+
+```{r awareness, fig.cap = "Mean proportions of decisions to invest in each set of 10 projects, by awareness conditions. Error bars represent 95% confidence intervals."}
+readd(awareness)
+```
+
+```{r presentation, fig.cap = "Mean proportions of decisions to invest in each set of 10 projects, by presentation conditions. Error bars represent 95% confidence intervals."}
+readd(presentation)
+```
+
+```{r similarity-presentation, fig.cap = "Mean proportions of decisions to invest in each set of 10 projects, by presentation and similarity conditions. Error bars represent 95% confidence intervals."}
+readd(similarity_presentation)
+```
+
+```{r plot-separate-trial-awareness, fig.cap = "Proportion of project acceptance in the separate presentation condition, by trial and awareness conditions. The smoothing over trials is done using LOESS, and the shading represents 95% confidence intervals."}
+readd(plot_separate_trial_awareness)
+```
+
+# Limitations
+
+- Outcome distribution
+  - The outcome distribution (presented after the gambles) was flipped such that it appeared more attractive than the actual distribution underlying the gambles.
+- Counterbalancing
+  - I didn't counterbalance the project domains, such that in the high similarity condition all participants saw the oil well project.
+  - There is a chance this will explain some of the interaction effect, since perhaps the nature of the project domain may have influenced the risk taking somehow.
+- The similarity x presentation interaction
+  - We did not predict this interaction and struggled to explain it.
+  - Also, it isn't a massive effect, so it may be spurious.
+
+# Future
+
+## Fixing limitations
+
+- A follow-up experiment could fix the limitations
+  - Use a corrected distribution
+  - Use proper counterbalancing
+  - Replicate the interaction
+  
+## Additions
+
+- Manipulating alignment
+  - At the moment, we really manipulate "similarity" and not "alignment" because all that changes is what the business project is about, that is oil well vs microchip, etc.
+  - The original thought was that doing this would manipulate the underlying alignment. That is, participants would infer from the type of project an ease or difficulty of comparison.
+  - But we can also add project features that either align or not as in the other experiments.
+  - This will allow for more explicit alignability, but will probably take participants more time to get through.
+- Naive condition follow-up question
+  - We can add a question after the gambles for the naive condition to ask how many gambles they think they saw.
+  - Might help understand the effect.
+- Manipulate distribution order
+  - We can also manipulate whether participants see the outcome distribution before or after seeing the gambles.
+  - The downside is that it will have to be between subjects, so will cost more.
+- Better business experience questions
+  - We should also add more nuanced demographics question that queries participants' business experience and education.
+  - At the moment it's just a question about how many years of experience/education in business they have.
+  - It seems important, especially since the prolific sample reported quite a high average years of experience.
+  - Asking these of the laypeople would also allow for a more direct comparison with the managers later on.
+  - Dan mentioned that he has these kinds of questions already from prior projects.
 
 \newpage
 
