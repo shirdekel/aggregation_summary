@@ -44,3 +44,8 @@ rsconnect/
 
 # renv via capsule
 renv/
+
+*.pdf
+*.tex
+*.thm
+*.png
