@@ -25,10 +25,9 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
 
 # Background
 
-- When considering a number of (positive EV)[^1] gambles, the probability of making an loss overall decreases as the number of accepted gambles increases.
-  - Due to aggregation.
+- An aggregated portfolio of (positive EV)[^1] gambles has lower overall risk and lower probability of making an overall loss than any individual gamble.
 - Choice bracketing (grouping choices) seems to facilitate EV maximisation (accept positive EV gambles and reject negative EV gambles).
-  - Suggests that choice bracketing facilitates aggregation.
+  - Suggests that choice bracketing might facilitate aggregation.
 
 [^1]: Note that the gambles referred to in this memo will be assumed to have a positive EV, unless otherwise specified.
 
@@ -54,6 +53,7 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
   - We rarely see the immediate outcomes of risky choices, or are able to sample from the outcome distribution.
 - Repeated-play gambles (description-based)
   - Outcomes and probabilities of each gamble were not specified.
+  - Not a good explanation about why this occurs.
 
 ## Choice bracketing manipulations for description-based repeated-play gambles
 
@@ -74,6 +74,9 @@ knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
   - Participants that know how many projects to expect will make more risky choices than participants that are unaware.
   - Participants will make more risky choices when seeing projects jointly than when seeing them separately.
   - Participants that see projects from the same industry will make more risky choices than participants that see projects from different industries.
+- Novelty
+  - More isomorphic with business: independent decisions without immediate feedback.
+  - New choice bracketing manipulations: similarity and awareness.
 
 ## Method
 
@@ -163,7 +166,7 @@ image_read(here("img","distribution.png")) %>%
   - See Figure\ \@ref(fig:similarity-presentation)
   - The presentation effect seems stronger in the high similarity condition than in the low similarity condition
 - An analysis of the trial-by-trial data showed that those in the aware condition became riskier over the 10 separate trials, but those in the naive condition did not.
-  - see Figure\ \@ref(fig:plot-separate-trial-awareness).
+  - See Figure\ \@ref(fig:plot-separate-trial-awareness).
   
 ```{r full, fig.cap = "Mean proportions of decisions to invest in each set of 10 projects, by presentation, similarity, and awareness conditions. Error bars represent 95% confidence intervals."}
 readd(full)
@@ -189,41 +192,75 @@ readd(plot_separate_trial_awareness)
 
 - Outcome distribution
   - The outcome distribution (presented after the gambles) was flipped such that it appeared more attractive than the actual distribution underlying the gambles.
-- Counterbalancing
+- Similarity counterbalancing
   - I didn't counterbalance the project domains, such that in the high similarity condition all participants saw the oil well project.
   - There is a chance this will explain some of the interaction effect, since perhaps the nature of the project domain may have influenced the risk taking somehow.
 - The similarity x presentation interaction
   - We did not predict this interaction and struggled to explain it.
   - Also, it isn't a massive effect, so it may be spurious.
+- Presentation counterbalancing
+  - There is an awareness effect in the joint presentation condition.
+  - This is odd, since participants can clearly see the number of gambles.
+  - Might be an order effect.
 
-# Future
+# Follow up
 
-## Fixing limitations
+## Changes
 
-- A follow-up experiment could fix the limitations
-  - Use a corrected distribution
-  - Use proper counterbalancing
-  - Replicate the interaction
+Distribution
+
+- Use a corrected distribution
+- Manipulate whether or not participants see a distribution alongside their gambles.
+  - Will allow to test whether people are aggregating naively or normatively.
+  - If there's an effect of distribution (which we'd hypothesise), then participants are not aggregating perfectly.
+  - Alongside an effect of presentation/awareness would suggest an aggregation "heuristic".
+
+Similarity
+
+- It is unclear what caused the similarity simple effect we found.
+- There is reason to believe that it is a naive diversification effect (people preferring heterogeneity).
+- However, it is unclear what would be a way to separate this from a potential bracketing effect (homogeneity facilitating bracketing).
+  - Both could be contributing.
+- Should probably remove this manipulation for the follow-up.
+
+Presentation
+
+- Manipulate between-subjects in order to rule out order effects.
+
+Awareness
   
-## Additions
-
-- Manipulating alignment
-  - At the moment, we really manipulate "similarity" and not "alignment" because all that changes is what the business project is about, that is oil well vs microchip, etc.
-  - The original thought was that doing this would manipulate the underlying alignment. That is, participants would infer from the type of project an ease or difficulty of comparison.
-  - But we can also add project features that either align or not as in the other experiments.
-  - This will allow for more explicit alignability, but will probably take participants more time to get through.
-- Naive condition follow-up question
-  - We can add a question after the gambles for the naive condition to ask how many gambles they think they saw.
+- We can add a question after the gambles for the naive condition to ask how many gambles they think they saw.
   - Might help understand the effect.
-- Manipulate distribution order
-  - We can also manipulate whether participants see the outcome distribution before or after seeing the gambles.
-  - The downside is that it will have to be between subjects, so will cost more.
-- Better business experience questions
-  - We should also add more nuanced demographics question that queries participants' business experience and education.
+
+Business experience
+
+- We should add more nuanced demographics question that queries participants' business experience and education.
   - At the moment it's just a question about how many years of experience/education in business they have.
   - It seems important, especially since the prolific sample reported quite a high average years of experience.
   - Asking these of the laypeople would also allow for a more direct comparison with the managers later on.
-  - Dan mentioned that he has these kinds of questions already from prior projects.
+- Specifically:
+  - Company revenue
+  - Role at the company
+  - Budget under control
+
+Chance percentages
+
+- According to Dan, percentage chance values that are not rounded to the nearest 5%, such as 26% like in our materials, are uncommon in the business world.
+
+## Design
+
+- We would be comparing three main effects in a non-factorial design:
+  - Presentation: joint vs. separate (in the naive awareness condition)
+  - Awareness: aware vs naive (in the separate presentation condition)
+  - Distribution: distribution vs no distribution (for all conditions)
+- Hypotheses (see Figure\ \@ref(fig:plot-predictions)):
+  - Joint Naive will be higher than Separate Naive (presentation effect).
+  - Separate Aware will be higher than Separate Naive (awareness effect).
+  - Distribution will be higher than no distribution (distribution effect).
+
+```{r plot-predictions, fig.cap = "Predictions for the aggregation follow-up experiment."}
+readd(plot_predictions)
+```
 
 \newpage
 

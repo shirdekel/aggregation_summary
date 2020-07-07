@@ -1,5 +1,6 @@
 the_plan <-
   drake_plan(
+    seed = set.seed(42),
     data = get_data(),
     full = apa_plot(data = data, 
                     iv1 = "Awareness", 
@@ -26,7 +27,7 @@ the_plan <-
                                        dv.lab = "Mean proportions of project acceptance"),
     data_trials = clean_data(aggregation::dat),
     plot_separate_trial_awareness = get_plot_separate_trial_awareness(data_trials),
-    
+    plot_predictions = get_plot_predictions(),
     memo = target(
       command = {
         file_in()
