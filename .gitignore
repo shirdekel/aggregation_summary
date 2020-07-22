@@ -49,3 +49,4 @@ renv/
 *.tex
 *.thm
 *.png
+*.DS_Store
