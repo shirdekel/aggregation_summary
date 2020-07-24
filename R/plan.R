@@ -28,6 +28,7 @@ the_plan <-
     data_trials = clean_data(aggregation::dat),
     plot_separate_trial_awareness = get_plot_separate_trial_awareness(data_trials),
     plot_predictions = get_plot_predictions(),
+    sample_size_presentation = get_sample_size_presentation(data),
     memo = target(
       command = {
         file_in()
